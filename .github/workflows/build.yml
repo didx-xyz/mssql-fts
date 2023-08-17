@@ -16,10 +16,20 @@ jobs:
 
     strategy:
       matrix:
+        version:
+          - latest
+          - latest-ubuntu
+          - 2022-latest
         include:
           - version: latest
+            ubuntu: 20.04
+            year: 2022
           - version: latest-ubuntu
+            ubuntu: 20.04
+            year: 2022
           - version: 2022-latest
+            ubuntu: 20.04
+            year: 2022
 
     steps:
       - uses: actions/checkout@v3
@@ -44,6 +54,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: VERSION=${{ matrix.version }}
+          build-args: |-
+            VERSION=${{ matrix.version }}
+            UBUNTU=${{ matrix.ubuntu }}
+            YEAR=${{ matrix.year }}
           cache-from: type=gha,scope=build-${{ matrix.version }}
           cache-to: type=gha,mode=max,scope=build-${{ matrix.version }}
