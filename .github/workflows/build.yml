@@ -22,13 +22,13 @@ jobs:
           - 2022-latest
         include:
           - version: latest
-            ubuntu: 20.04
+            ubuntu: 22.04
             year: 2022
           - version: latest-ubuntu
-            ubuntu: 20.04
+            ubuntu: 22.04
             year: 2022
           - version: 2022-latest
-            ubuntu: 20.04
+            ubuntu: 22.04
             year: 2022
 
     steps:
